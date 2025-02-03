@@ -20,7 +20,7 @@
         </select><br><br>
         
         <label for="limit">Number of words to display:</label>
-        <input type="number" id="limit" name="limit" value="10" min="1"><br><br>
+        <input type="number" id="limit" name="limit" value="10" min="1" title="Please enter a number"><br><br>
         
         <input type="submit" value="Calculate Word Frequency">
     </form>
