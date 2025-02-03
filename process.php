@@ -1,6 +1,4 @@
 <?php
-header('Content-Type: application/json');
-
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -66,6 +64,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $limited_array = display_array_with_limit($sorted_array,$displayLimit);
 
 
-    echo json_encode($limited_array);
+    //display as list
+    function displayJSONtoTable($json) {
+        echo "<table border='1' cellspacing='0' cellpadding='5'>";
+        echo "<tr><th>Word</th><th>Occurences</th></tr>";
+    
+        foreach ($json as $key => $value) {
+            if (is_array($value)) {
+                echo "<tr><td><strong>$key</strong></td><td>";
+                foreach ($value as $subKey => $subValue) {
+                    echo "<tr><td>$subKey</td><td>$subValue</td></tr>";
+                }
+                echo "</td></tr>";
+            } else {
+                echo "<tr><td><strong>$key</strong></td><td>$value</td></tr>";
+            }
+        }
+        echo "</table>";
+    }
+
+    echo displayJSONtoTable($limited_array);
 
 }
