@@ -58,11 +58,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //display only based on limit
 
-    function display_array_with_limit(){
-
+    function display_array_with_limit($array,$limit){
+        $sliced_array = array_slice($array,1,$limit);
+        return $sliced_array;
     }
 
+    $limited_array = display_array_with_limit($sorted_array,$displayLimit);
 
-    echo json_encode($sorted_array);
+
+    echo json_encode($limited_array);
 
 }
